@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthorizationMicroservice", "AuthorizationMicroservice\AuthorizationMicroservice.csproj", "{A744E0CA-6849-410B-B99E-199F1D484E2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PensionerDetailMicroservice", "PensionerDetailMicroservice\PensionerDetailMicroservice.csproj", "{5261CDB6-1F69-4C25-8AD9-AF19EC476F60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessPensionMicroservice", "ProcessPensionMicroservice\ProcessPensionMicroservice.csproj", "{2AE8768B-3834-4B82-BD92-87D48BA26A53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A744E0CA-6849-410B-B99E-199F1D484E2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A744E0CA-6849-410B-B99E-199F1D484E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A744E0CA-6849-410B-B99E-199F1D484E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A744E0CA-6849-410B-B99E-199F1D484E2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5261CDB6-1F69-4C25-8AD9-AF19EC476F60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5261CDB6-1F69-4C25-8AD9-AF19EC476F60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5261CDB6-1F69-4C25-8AD9-AF19EC476F60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5261CDB6-1F69-4C25-8AD9-AF19EC476F60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AE8768B-3834-4B82-BD92-87D48BA26A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AE8768B-3834-4B82-BD92-87D48BA26A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE8768B-3834-4B82-BD92-87D48BA26A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE8768B-3834-4B82-BD92-87D48BA26A53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD4EAB58-C9E4-4526-A42D-8F56400C2EAF}
+	EndGlobalSection
+EndGlobal
