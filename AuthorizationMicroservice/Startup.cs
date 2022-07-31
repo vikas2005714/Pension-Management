@@ -33,6 +33,7 @@ namespace AuthorizationMicroservice
         {
 
             services.AddControllers();
+
             services.AddCors();
             services.AddDbContext<ApplicationDbContex>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
