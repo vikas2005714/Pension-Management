@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authorizationmicroservice-deployment
+  labels:
+    app: authorizationmicroservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authorizationmicroservice
+  template:
+    metadata:
+      labels:
+        app: authorizationmicroservice
+    spec:
+      containers:
+        - name: authorizationmicroservice
+          image: pensionsystem.azurecr.io/authorizationmicroservice:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "0.1"
+            limits:
+              memory: "128Mi"
+              cpu: "0.3"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authorizationmicroservice-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: authorizationmicroservice
+  ports:
+    - protocol: TCP
+      port: 80

@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: processpensionmicroservice-deployment
+  labels:
+    app: processpensionmicroservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: processpensionmicroservice
+  template:
+    metadata:
+      labels:
+        app: processpensionmicroservice
+    spec:
+      containers:
+        - name: processpensionmicroservice
+          image: pensionsystem.azurecr.io/processpensionmicroservice:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: pensiondetailsUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: pensionerdetailmicroservice-configmap
+                  key: pensionerdetailmicroservice_url
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "0.1"
+            limits:
+              memory: "128Mi"
+              cpu: "0.3"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: processpensionmicroservice-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: processpensionmicroservice
+  ports:
+    - protocol: TCP
+      port: 80
