@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '1a338a8f-bf68-4873-849f-5d4c203a15ae'
-  imageRepository: 'vikaspensionmanagement'
+  imageRepository: 'authorizationmicroservice'
   containerRegistry: 'pensionsystem.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/AuthorizationMicroservice/Dockerfile'
   tag: '$(Build.BuildId)'
