@@ -20,7 +20,7 @@ variables:
   dockerRegistryServiceConnection: '097ebdc6-4245-4295-84b3-20a69f392195'
   imageRepository: 'authorizationmicroservice'
   containerRegistry: 'pensionsystem.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: 'AuthorizationMicroservice/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'pensionsystem79716fef-auth'
 
