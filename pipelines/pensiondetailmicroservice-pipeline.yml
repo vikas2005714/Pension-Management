@@ -8,8 +8,8 @@ trigger:
       - main
     paths:
       include:
-      - AuthorizationMicroservice/*
-      - k8s/authorization.yaml
+      - PensionerDetailMicroservice/*
+      - k8s/pensiondetails.yaml
 
 resources:
 - repo: self
@@ -18,7 +18,7 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '097ebdc6-4245-4295-84b3-20a69f392195'
-  imageRepository: 'authorizationmicroservice'
+  imageRepository: 'pensionerdetailmicroservice'
   containerRegistry: 'pensionsystem.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
@@ -77,7 +77,7 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/k8s/authorization.yaml
+                $(Pipeline.Workspace)/k8s/pensiondetails.yaml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
