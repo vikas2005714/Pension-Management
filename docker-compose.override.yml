@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  authorizationmicroservice:
+    container_name: authorization
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8000:80"
+  
+  processpensionmicroservice:
+    container_name: processpension
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development 
+      - "pensiondetailsUrl=http://pensiondetails"
+    depends_on:
+      - pensionerdetailmicroservice
+      - authorizationmicroservice
+    ports:
+      - "8001:80"
+
+  pensionerdetailmicroservice:
+    container_name: pensiondetails
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8002:80"
+    

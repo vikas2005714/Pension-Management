@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using ProcessPensionMicroservice.Data;
 using ProcessPensionMicroservice.Model;
@@ -14,21 +15,25 @@ namespace ProcessPensionMicroservice.Repository
     public class ProcessPensionRepository : IProcessPension
     {
         private readonly ApplicationDbContex db;
-       
+        private readonly IConfiguration configuration;
+        private readonly IGetpensionDetails details;
 
 
-        public ProcessPensionRepository(ApplicationDbContex _db)
+
+        public ProcessPensionRepository(ApplicationDbContex _db, IConfiguration con,IGetpensionDetails _details)
         {
             db = _db;
+            configuration = con;
+            details = _details;
 
         }
-        
+
         public ApiResult CalculatePension(long AadharNo)
         {
             var apiresult = new ApiResult();
-            var Httpreponse = new CallMicroservice();
+            //var Httpreponse = new CallMicroservice(configuration);
             var pensionDetails = new ProcessPensionDTO();
-            var response = Httpreponse.HttpClientservice(AadharNo).Result;
+            var response = details.HttpClientservice(AadharNo).Result;
             if (response.IsSuccessStatusCode && response.Content.ReadAsStringAsync().Result != "")
             {
                 var result = response.Content.ReadAsStringAsync();
@@ -37,7 +42,7 @@ namespace ProcessPensionMicroservice.Repository
                 double SelfAmount = 0.8 * (UserDetails.salaryEarned) + UserDetails.allowances;
                 double FamilyAmount = 0.5 * (UserDetails.salaryEarned) + UserDetails.allowances;
                 pensionDetails.PensionAmount = (UserDetails.pensionType == "Self") ? SelfAmount : FamilyAmount;
-                CreatePensionRecord(pensionDetails, AadharNo);
+               // CreatePensionRecord(pensionDetails, AadharNo);
                 apiresult.Message = "You Login Sucessfully";
                 apiresult.Status = "Success";
                 apiresult.User = pensionDetails;

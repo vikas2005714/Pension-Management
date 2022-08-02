@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  authorizationmicroservice:
+    image: ${DOCKER_REGISTRY-}authorizationmicroservice
+    build:
+      context: .
+      dockerfile: AuthorizationMicroservice/Dockerfile
+
+  pensionerdetailmicroservice:
+    image: ${DOCKER_REGISTRY-}pensionerdetailmicroservice
+    build:
+      context: .
+      dockerfile: PensionerDetailMicroservice/Dockerfile
+
+
+  processpensionmicroservice:
+    image: ${DOCKER_REGISTRY-}processpensionmicroservice
+    build:
+      context: .
+      dockerfile: ProcessPensionMicroservice/Dockerfile
+

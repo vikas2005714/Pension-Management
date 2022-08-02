@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProcessPensionMicroservice.Data;
 using ProcessPensionMicroservice.Repository;
+using ProcessPensionMicroservice.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,8 @@ namespace ProcessPensionMicroservice
             services.AddDbContext<ApplicationDbContex>(options =>
                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IProcessPension, ProcessPensionRepository>();
+            services.AddScoped<IGetpensionDetails, CallMicroservice>();
+
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PensionerDetailMicroservice", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme() {
