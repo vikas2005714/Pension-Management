@@ -29,7 +29,7 @@ namespace PensionerDetailMicroservice.Repository
             var obj = _mapper.Map<PensionDetailsDTO>(user);
             if (obj == null)
             {
-                apiresult.Message = "User Is Not Found For this Aadhar no. Please Check Aadhar once again";
+                apiresult.Message = "User Is Not Found For this Aadhar no. Please Check Aadhar again";
                 apiresult.Status = "Error";
                 apiresult.User = null;
                 return apiresult;
