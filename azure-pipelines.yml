@@ -35,6 +35,6 @@ stages:
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
-        buildContext: $(Build.SourcesDirectory)/AuthorizationMicroservice
+        buildContext: $(Build.SourcesDirectory)
         tags: |
           $(tag)
