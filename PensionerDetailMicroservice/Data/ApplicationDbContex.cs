@@ -9,12 +9,10 @@ namespace PensionerDetailMicroservice.Data
 {
     public class ApplicationDbContex : DbContext
     {
-        public ApplicationDbContex(DbContextOptions<ApplicationDbContex> option):base(option)
+        public ApplicationDbContex(DbContextOptions<ApplicationDbContex> option) : base(option)
         {
 
-        }
-
-        
+        } 
         public DbSet<PensionDetails> pensiondetail { get; set; }
     }
 }

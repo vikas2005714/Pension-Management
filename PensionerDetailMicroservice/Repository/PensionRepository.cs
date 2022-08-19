@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PensionerDetailMicroservice.Data;
 using PensionerDetailMicroservice.IRepository;
 using PensionerDetailMicroservice.Model.DTO;
@@ -22,22 +23,13 @@ namespace PensionerDetailMicroservice.Repository
            
 
         }
-        public ApiResult GetPensionDetailsByAadar(long AadharNo)
+        public PensionDetailsDTO GetPensionDetailsByAadar(long AadharNo)
         {
-            var apiresult = new ApiResult();
-            var user = db.pensiondetail.SingleOrDefault(x => x.AadharNo == AadharNo);
+            var user = db.pensiondetail.Include(i => i.BankDetail).SingleOrDefault(x => x.AadharNo == AadharNo);
             var obj = _mapper.Map<PensionDetailsDTO>(user);
-            if (obj == null)
-            {
-                apiresult.Message = "User Is Not Found For this Aadhar no. Please Check Aadhar again";
-                apiresult.Status = "Error";
-                apiresult.User = null;
-                return apiresult;
-            }
-            apiresult.Message = "You Login Sucessfully";
-            apiresult.Status = "Success";
-            apiresult.User = obj;
-            return apiresult;
+            obj.BankName = user.BankDetail.BankName;
+            return obj;
+           
         }
     }
 }

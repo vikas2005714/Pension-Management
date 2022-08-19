@@ -57,8 +57,6 @@ namespace AuthorizationMicroservice
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AuthorizationMicroservice v1"));
             }
 
-            app.UseHttpsRedirection();
-
             app.UseCors(x =>
            x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 

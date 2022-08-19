@@ -26,57 +26,11 @@ namespace AuthorizationMicroservice.Repository
 
 
         }
-        public ApiResult Authenticate(string username, string password)
+        
+        public User FindUser_InList(string username, string password)
         {
-            var apiresult = new ApiResult();
             var user = db.users.SingleOrDefault(x => x.UserName == username && x.Password == password);
-            if(user == null) {
-                apiresult.Message = "User Is Not Found";
-                apiresult.Status = "Error";
-                apiresult.User = null;
-                return apiresult;
-            }
-
-            var tokenhandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokendescriptor = new SecurityTokenDescriptor {
-                Subject = new ClaimsIdentity(new Claim[] {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddMinutes(10),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenhandler.CreateToken(tokendescriptor);
-            user.Token = tokenhandler.WriteToken(token);
-            apiresult.Message = "You Login Sucessfully !";
-            apiresult.Status = "Success";
-            apiresult.User = user;
-            return apiresult;
-
-        }
-
-        public bool IsuniqueuserName(string username)
-        {
-            var user = db.users.Select(x => x.UserName == username);
-            if(user == null) {
-                return true;
-            }
-            return false;
-        }
-
-        public User Register(string username, string password)
-        {
-            User userobj = new User { 
-                UserName = username,
-                Password = password
-            };
-
-            db.users.Add(userobj);
-            db.SaveChanges();
-            userobj.Password = "";
-            return userobj;
-
-
+            return user;
         }
     }
 }

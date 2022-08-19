@@ -8,8 +8,6 @@ namespace AuthorizationMicroservice.IRepository
 {
     public interface IUser
     {
-        bool IsuniqueuserName(string username);
-        ApiResult Authenticate(string username, string password);
-        User Register(string username, string password);
+        User FindUser_InList(string username, string password);
     }
 }

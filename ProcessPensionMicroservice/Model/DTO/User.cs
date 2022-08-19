@@ -9,7 +9,7 @@ namespace ProcessPensionMicroservice.Model.DTO
         {
             public string name { get; set; }
             public int pan { get; set; }
-            public int aadharNo { get; set; }
+            public long aadharNo { get; set; }
             public int allowances { get; set; }
             public int salaryEarned { get; set; }
             public string pensionType { get; set; }

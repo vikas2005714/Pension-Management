@@ -11,10 +11,7 @@ namespace AuthorizationMicroservice.Data
     {
         public ApplicationDbContex(DbContextOptions<ApplicationDbContex> option):base(option)
         {
-
-        }
-
-        
+        } 
         public DbSet<User> users { get; set; }
     }
 }

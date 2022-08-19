@@ -8,6 +8,6 @@ namespace PensionerDetailMicroservice.IRepository
 {
     public interface IPensionDetails
     {
-        ApiResult GetPensionDetailsByAadar(long AadharNo);
+        PensionDetailsDTO GetPensionDetailsByAadar(long AadharNo);
     }
 }

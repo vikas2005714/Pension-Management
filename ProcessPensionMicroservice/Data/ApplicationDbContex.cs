@@ -8,10 +8,7 @@ namespace ProcessPensionMicroservice.Data
     {
         public ApplicationDbContex(DbContextOptions<ApplicationDbContex> option):base(option)
         {
-
-        }
-
-        
+        } 
         public DbSet<ProcessPension> processPensions { get; set; }
     }
 }

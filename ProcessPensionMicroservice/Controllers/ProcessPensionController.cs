@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ProcessPensionMicroservice.Model.DTO;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,11 @@ namespace ProcessPensionMicroservice.Controllers
     public class ProcessPensionController : ControllerBase
     {
         private IProcessPension _repository;
-        public ProcessPensionController(IProcessPension repository)
+        private readonly ILogger<ProcessPensionController> _logger;
+        public ProcessPensionController(IProcessPension repository, ILogger<ProcessPensionController> logger)
         {
             _repository = repository;
+            _logger = logger;
 
 
         }
@@ -29,8 +32,9 @@ namespace ProcessPensionMicroservice.Controllers
         [ActionName("ProcessPensionDetails")]
         //[ProducesResponseType(200, Type = typeof(PensionDetailsDTO))]
         [ProducesResponseType(400)]
-        public IActionResult GetNationalPark([FromBody] AddharInput Ano)
+        public IActionResult PensionCalculation([FromBody] AddharInput Ano)
         {
+            _logger.LogInformation("Calculating the Pension Amount");
             try
             {
                 var data = _repository.CalculatePension(Ano.AddharNo);
@@ -38,6 +42,7 @@ namespace ProcessPensionMicroservice.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError("Error Occured in the Calcualting the Pension");
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
 
