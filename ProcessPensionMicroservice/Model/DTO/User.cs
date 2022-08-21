@@ -14,7 +14,7 @@ namespace ProcessPensionMicroservice.Model.DTO
             public int salaryEarned { get; set; }
             public string pensionType { get; set; }
             public string bankName { get; set; }
-            public int accountNo { get; set; }
+            public long accountNo { get; set; }
             public string bankType { get; set; }
             public string dateOfBirth { get; set; }
         }
