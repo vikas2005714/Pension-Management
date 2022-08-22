@@ -17,12 +17,12 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '097ebdc6-4245-4295-84b3-20a69f392195'
+  dockerRegistryServiceConnection: '52947ec6-a0b0-45b0-bf38-44f48225ade4'
   imageRepository: 'pensionerdetailmicroservice'
   containerRegistry: 'pensionsystem.azurecr.io'
   dockerfilePath: 'PensionerDetailMicroservice/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'pensionsystem79716fef-auth'
+  imagePullSecret: 'pensionsystem303350d7-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -60,7 +60,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'vikas2005714PensionManagement-1059.default'
+    environment: 'vikas2005714PensionManagement.default'
     strategy:
       runOnce:
         deploy:
