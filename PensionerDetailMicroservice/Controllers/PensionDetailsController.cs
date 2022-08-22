@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace PensionerDetailMicroservice.Controllers
 {
     [Route("api/[controller]/[action]")]
-    //[Authorize]
+    [Authorize]
     [ApiController]
     public class PensionDetailsController : ControllerBase
     {
