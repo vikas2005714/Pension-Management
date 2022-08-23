@@ -34,7 +34,7 @@ namespace ProcessPensionMicroservice.Controllers
         [ProducesResponseType(400)]
         public IActionResult PensionCalculation([FromBody] AddharInput Ano)
         {
-            _logger.LogInformation("Calculating the Pension Amount");
+            _logger.LogInformation("Calculating the Pension Amounts");
             try
             {
                 var data = _repository.CalculatePension(Ano.AddharNo);
